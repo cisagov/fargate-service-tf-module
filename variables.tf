@@ -101,6 +101,3 @@ variable "iam_server_cert_arn" {
 #
 # These parameters have reasonable defaults.
 # ------------------------------------------------------------------------------
-
-
-
