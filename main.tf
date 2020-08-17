@@ -142,22 +142,11 @@ resource "aws_iam_role" "ecs_task" {
   assume_role_policy = data.aws_iam_policy_document.ecs_assume_role.json
 }
 
-data "aws_iam_policy_document" "ecs_task" {
-  statement {
-    actions = [
-      "s3:*"
-    ]
-
-    resources = [
-      "*"
-    ]
-  }
-}
-
 resource "aws_iam_policy" "ecs_task" {
+  count       = var.iam_policy_document != null ? 1 : 0
   name        = "${module.label.id}-ecs-task"
   description = "Policy for running ecs tasks"
-  policy      = data.aws_iam_policy_document.ecs_task.json
+  policy      = var.iam_policy_document
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task" {
