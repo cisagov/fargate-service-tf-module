@@ -150,6 +150,7 @@ resource "aws_iam_policy" "ecs_task" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task" {
+  count      = var.iam_policy_document != null ? 1 : 0
   role       = aws_iam_role.ecs_task.name
   policy_arn = aws_iam_policy.ecs_task.arn
 }
