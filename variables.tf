@@ -56,7 +56,7 @@ variable "cpu" {
   type = number
 }
 
-variable "iam_server_cert_arn" {
+variable "https_cert_arn" {
   type = string
 }
 
